@@ -24,8 +24,15 @@ unsigned int *get_bits()
     {
         printf("Enter a 1 or 0 for bit %d: ", i);
         scanf("%d", &bits[i]);
-        printf("You entered: %d\n", bits[i]);
-        printf("\n");
+        if(bits[i]!=1 && bits[i]!=0){
+            printf("You entered invalid input that will be treated as 0\n");
+            printf("\n");
+        }
+        else{
+            printf("You entered: %d\n", bits[i]);
+            printf("\n");
+        }
+        
     }
 
     return bits;
@@ -34,7 +41,7 @@ unsigned int *get_bits()
 /*Function called by the main(). This calls the helper function "get_bits" and
 packs user input into a byte, if a specific value from bytes.h is given, it 
 displays the appropriate text output, or else it displays the byte in hex, 
-decimal, and binary. Any input that is not a '1' is treated as a '0'*/
+decimal, and binary. Any input that is not a '0' or '1' is treated as a '0'*/
 void pack()
 {
     unsigned int *returned_bits = get_bits();
